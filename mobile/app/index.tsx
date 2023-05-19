@@ -1,9 +1,11 @@
-import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
-import { useRouter } from 'expo-router'
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
-import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+
 import { styled } from 'nativewind'
+
+import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+import { useRouter } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 import * as SecureStore from 'expo-secure-store'
 
 import {
@@ -25,7 +27,7 @@ const discovery = {
   authorizationEndpoint: 'https://github.com/login/oauth/authorize',
   tokenEndpoint: 'https://github.com/login/oauth/access_token',
   revocationEndpoint:
-    'https://github.com/settings/connections/applications/d26f194cc5d5132a51be',
+    'https://github.com/settings/connections/applications/e3a6f50af3e2861e137e',
 }
 
 export default function App() {
@@ -39,7 +41,7 @@ export default function App() {
 
   const [, response, signInWithGithub] = useAuthRequest(
     {
-      clientId: 'd26f194cc5d5132a51be',
+      clientId: 'e3a6f50af3e2861e137e',
       scopes: ['identity'],
       redirectUri: makeRedirectUri({
         scheme: 'nlwspacetime',
@@ -73,6 +75,7 @@ export default function App() {
 
       handleGithubOAuthCode(code)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response])
 
   if (!hasLoadedFonts) {
